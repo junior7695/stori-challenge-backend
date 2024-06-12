@@ -43,7 +43,7 @@ func (srv *TransactionService) ReadS3Files(ctx context.Context, event events.S3E
 		bucket := record.S3.Bucket.Name
 		key := record.S3.Object.Key
 
-		if key != *aws.String(os.Getenv("BUCKET_CSV")) {
+		if bucket != os.Getenv("BUCKET_CSV") {
 			continue
 		}
 

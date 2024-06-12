@@ -8,6 +8,7 @@ import (
 	"github.com/aws/aws-sdk-go/service/ses"
 	"html/template"
 	"log"
+	"math"
 	"os"
 	"stori-challenge/internal/core/domain"
 )
@@ -95,10 +96,10 @@ func formatEmailBody(reportDocument domain.ReportDocument) (body bytes.Buffer, e
 		AverageCredit       float64
 		TransactionsByMonth map[string]int
 	}{
-		LogoURL:             *aws.String(os.Getenv("LOGO_URL")),
-		TotalBalance:        reportDocument.TotalBalance,
-		AverageDebit:        reportDocument.AverageDebit,
-		AverageCredit:       reportDocument.AverageCredit,
+		LogoURL:             os.Getenv("LOGO_URL"),
+		TotalBalance:        roundAmount(reportDocument.TotalBalance),
+		AverageDebit:        roundAmount(reportDocument.AverageDebit),
+		AverageCredit:       roundAmount(reportDocument.AverageCredit),
 		TransactionsByMonth: reportDocument.MonthlyTransactions,
 	}
 
@@ -107,4 +108,8 @@ func formatEmailBody(reportDocument domain.ReportDocument) (body bytes.Buffer, e
 	}
 
 	return body, nil
+}
+
+func roundAmount(amount float64) float64 {
+	return math.Round((amount * 100) / 100)
 }
