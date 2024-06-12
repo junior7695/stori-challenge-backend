@@ -93,7 +93,7 @@ Cada función Lambda necesita ciertas variables de entorno para funcionar correc
 3. **Las transacciones se guardan en DynamoDB** usando la función `save_transactions`.
 4. **La función `send_email` se activa** y envía un resumen de las transacciones por correo electrónico.
 
-## Partisipante del challenge
+## participante del challenge
 
 Jaime Vallejo 
 [Linkedin](https://www.linkedin.com/in/jaime-daniel-vallejo-pe%C3%B1a-37586a170/)
