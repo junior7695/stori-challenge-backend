@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# Ejecuta el binario de Go
+./main
